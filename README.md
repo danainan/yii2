@@ -6,6 +6,8 @@
     <br>
 </p>
 
+:snowman: ใช้ xampp -> Apache, MongoDB -> Yii2 Collection
+
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
 developing complex Web applications with multiple tiers.
 
