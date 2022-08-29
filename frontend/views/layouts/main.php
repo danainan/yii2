@@ -24,6 +24,9 @@ AppAsset::register($this);
     <?php $this->head() ?>
     <link href="../../theme/assets/css/theme.css" rel="stylesheet" />
     <link rel="shortcut icon" href="holdem.png" type="image/x-icon">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     
 </head>
 
@@ -61,7 +64,7 @@ AppAsset::register($this);
             $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
-            $menuItems[] =  ['label' => 'Cart', 'url' => ['/site/cart']];
+            $menuItems[] =  ['label' => 'Cart', 'url' => ['/cart/index']];
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
@@ -85,7 +88,7 @@ AppAsset::register($this);
     </header>
 
     <main role="main" class="flex-shrink-0" style="background-color: #F7F3EE; font-family: Roboto, Kanit, sans-serif">
-        <div class="container">
+        <div class="container" >
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
@@ -110,7 +113,6 @@ AppAsset::register($this);
             position: relative;
             
         }
-       
     
         
 </style>

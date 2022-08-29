@@ -29,7 +29,7 @@ $this->title = 'Holdem Shop';
                                             <h5 class="fw-bold text-1000 text-truncate"><?= $model->product_name?></h5>
                                             <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through"><?= $model->price+100?></span><span class="text-primary"><?= $model->price?> ฿</span></div>
                                         </div>
-                                        <a class="stretched-link btn btn-warning" href="#">ซื้อสินค้า</a>
+                                        <a class="stretched-link btn btn-warning" href="index.php?r=products/view&_id=<?= $model->_id?>">ซื้อสินค้า</a>
                                     </div>
                                 </div>
                             <?php }?>
