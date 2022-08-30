@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
         width: auto;
         display: inline-block;
         cursor: zoom-in;
+        transition: all .3s ease-in-out;
     }
 
 
@@ -38,6 +39,11 @@ $this->params['breadcrumbs'][] = $this->title;
         object-fit: cover;
         border-radius: 4px;
         cursor: zoom-in;
+    }
+    .gallery-wrap .img-big-wrap img:hover {
+        transform: scale(1.1);
+        
+        
     }
 </style>
 <?php $form = ActiveForm::begin(); ?>
@@ -62,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <h3 class="title mb-3"><?= Html::encode($this->title) ?></h3>
 
                         <p class="price-detail-wrap">
-                            <span class="price h3 text-warning">
+                            <span class="price h2 text-primary">
                                 <span class="currency">฿</span><span class="num"><?= $model->price ?></span>
                             </span>
                         </p> <!-- price-detail-wrap .// -->

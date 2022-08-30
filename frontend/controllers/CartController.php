@@ -7,7 +7,7 @@ use app\models\CartSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use Yii;
 /**
  * CartController implements the CRUD actions for Cart model.
  */

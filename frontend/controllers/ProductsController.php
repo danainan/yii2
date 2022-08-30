@@ -62,6 +62,7 @@ class ProductsController extends Controller
     {   
         $cartModel = new Cart();
         if ($this->request->isPost && $cartModel->load($this->request->post()) && $cartModel->save()) {
+            Yii::$app->session->setFlash('success', ' Add to cart successfully.');
             return $this->redirect(['cart/index']);
         }
         return $this->render('view', [

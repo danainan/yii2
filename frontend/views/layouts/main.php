@@ -92,7 +92,9 @@ AppAsset::register($this);
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
-            <?= Alert::widget() ?>
+
+
+            <?=\yii2mod\alert\Alert::widget()?>
             <?= $content ?>
         </div>
     </main>
@@ -107,15 +109,7 @@ AppAsset::register($this);
     <?php $this->endBody() ?>
 </body>
 
-<style>
-        .hover-underline-animation {
-            display: inline-block;
-            position: relative;
-            
-        }
-    
-        
-</style>
+
 </html>
 <?php $this->endPage();
 
