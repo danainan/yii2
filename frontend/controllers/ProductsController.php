@@ -61,7 +61,17 @@ class ProductsController extends Controller
     public function actionView($_id)
     {   
         $cartModel = new Cart();
-        if ($this->request->isPost && $cartModel->load($this->request->post()) && $cartModel->save()) {
+        if ($this->request->isPost && $cartModel->load($this->request->post())) {
+
+            $cart = Cart::find()->where(["user_id"=>(String)Yii::$app->user->identity->_id])->where(["product_id"=>$cartModel->product_id,"size"=>$cartModel->size, "color"=>$cartModel->color])->one();
+
+            if (!empty($cart)) {
+                $cartModel = Cart::findOne(["_id" => $cart->_id]);
+                $cartModel->quantity = (String)((int)$cart->quantity + 1);
+            }
+                $cartModel->save();
+            
+            
             Yii::$app->session->setFlash('success', ' Add to cart successfully.');
             return $this->redirect(['cart/index']);
         }

@@ -23,7 +23,6 @@ $this->title = 'Holdem Shop';
         border-radius: 4px;
         background: #fff;
         box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
-        
         padding: 5px 5px 5px 5px;
         cursor: pointer;
     }
@@ -52,7 +51,7 @@ $this->title = 'Holdem Shop';
                                         <div class="card-img-overlay ps-0"> </div>
                                         <div class="card-body ps-0 bg-200">
                                             <h5 class="fw-bold text-1000 text-truncate"><?= $model->product_name ?></h5>
-                                            <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through"><?= $model->price + 100 ?></span><span class="text-primary"><?= $model->price ?> ฿</span></div>
+                                            <div class="fw-bold"><span class="text-600 me-2 text-decoration-line-through"><?= $model->price + 100 ?></span><span class="text-warning"><?= $model->price ?> ฿</span></div>
                                         </div>
                                         <a class="stretched-link btn btn-warning" href="index.php?r=products/view&_id=<?= $model->_id ?>">ซื้อสินค้า</a>
                                     </div>

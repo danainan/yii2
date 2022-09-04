@@ -14,11 +14,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
     .gallery-wrap .img-big-wrap img {
-        height: 297px;
-        width: auto;
+        padding: 20px 20px 20px 20px;
         display: inline-block;
         cursor: zoom-in;
         transition: all .3s ease-in-out;
+        box-shadow: 0 0 1px 10px rgba(0, 0, 0, 0.1);
     }
 
 
@@ -53,17 +53,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="card">
             <div class="row">
-                <aside class="col-sm-5 border-right">
+                <aside class="col-sm-6 border-right">
                     <article class="gallery-wrap">
                         <div class="img-big-wrap">
-                            <div> <a href="#"><img src="<?= $model->image_url ?>"></a></div>
+                            <img class="img-fluid h-100" src="<?= $model->image_url ?>" alt="..." />
                         </div> <!-- slider-product.// -->
                         <div class="img-small-wrap">
                             <div class="item-gallery"> <img src="<?= $model->image_url ?>"> </div>
                         </div> <!-- slider-nav.// -->
                     </article> <!-- gallery-wrap .end// -->
                 </aside>
-                <aside class="col-sm-7">
+                <aside class="col-sm-6">
                     <article class="card-body p-5">
                         <h3 class="title mb-3"><?= Html::encode($this->title) ?></h3>
 
@@ -137,16 +137,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <br><br><br>
-    <article class="bg-secondary mb-3">
-        <div class="card-body text-center">
-            <h4 class="text-white">HTML UI KIT <br> Ready to use Bootstrap 4 components and templates </h4>
-            <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
-                and product landing pages</p> <br>
-            <p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com
-                    <i class="fa fa-window-restore "></i></a></p>
-        </div>
-        <br><br><br>
-    </article>
+    
 
 
 

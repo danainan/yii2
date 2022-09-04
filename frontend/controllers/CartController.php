@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
+
 /**
  * CartController implements the CRUD actions for Cart model.
  */
@@ -38,12 +39,10 @@ class CartController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CartSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $cart = Cart::find()->where(["user_id"=>(String)Yii::$app->user->identity->_id])->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'cart' => $cart,
         ]);
     }
 
