@@ -15,8 +15,8 @@ use phpDocumentor\Reflection\Location;
 
 $this->title = 'Carts';
 $this->params['breadcrumbs'][] = $this->title;
-$total =0;
-
+$total = 0;
+$countItem = 0;
 
 ?>
 
@@ -92,8 +92,8 @@ $total =0;
         width: 133px;
         height: 133px;
         float: left;
-        padding-top : 15px;
-        
+        padding-top: 15px;
+
     }
 
     .cart_item_image img {
@@ -218,81 +218,119 @@ $total =0;
 </style>
 
 
-<div class="cart-index">
 
-    <div class="cart_section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1">
-                    <div class="cart_container">
-                        <div class="cart_title">Shopping Cart</div>
-                        <div class="cart_items">
-                            <?php foreach ($cart as $model) {
-                                
-                                $total += (int)$model->quantity * (int)$model->price;
+<div class="cart_section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="cart_container">
+                    <div class="cart_title">
+                        <span>Shopping Cart</span>
 
-                                $product = Products::findOne(new MongoDB\BSON\ObjectID($model->product_id));
-                               
-                                ?>
-                                    <ul class="cart_list">
-                                    <li class="cart_item clearfix">
-                                        <div class="cart_item_image"><img src="<?=$product->image_url?>" alt=""></div>
-                                        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                            <div class="col-4">
-                                                <div class="cart_item_title">Name</div>
-                                                <td class="cart_item_text"><?=$product->product_name?></td>
+
+                    </div>
+
+
+                    <div class="cart_items">
+                        <?php foreach ($cart as $model) {
+
+
+                            $product = Products::findOne(new MongoDB\BSON\ObjectID($model->product_id));
+                            $total += (int)$model->quantity * (int)$model->price;
+                            $countItem += 1;
+                        ?>
+
+                            <ul class="cart_list">
+                                <li class="cart_item clearfix">
+                                    <div class="cart_item_image"><img src="<?= $product->image_url ?>" alt=""></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="col-4">
+                                            <div class="cart_item_title">Name</div>
+                                            <td class="cart_item_text"><?= $product->product_name ?></td>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="cart_item_title">Color</div>
+                                            <div class="cart_item_text"><?= $model->color ?></div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="cart_item_title">Size</div>
+                                            <div class="cart_item_text"><?= $model->size ?></div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="cart_item_title">Quantity</div>
+                                            <div class="cart_item_text"><?= $model->quantity ?></div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="cart_item_title">Price</div>
+                                            <div class="cart_item_text font-italic">฿ <?= $model->price ?></div>
+                                            <div><?= Html::a('Delete', ['delete', '_id' => (string) $model->_id], [
+                                                                'class' => 'btn btn-danger',
+                                                                'data' => [
+                                                                    'confirm' => 'Are you sure you want to delete this item?',
+                                                                    'method' => 'post',
+
+                                                                ],
+                                                            ]) ?>
                                             </div>
-                                            <div class="col-2">
-                                                <div class="cart_item_title">Color</div>
-                                                <div class="cart_item_text"><?=$model->color?></div>
-                                            </div>
-                                            <div class="col-2">
-                                                <div class="cart_item_title">Size</div>
-                                                <div class="cart_item_text"><?=$model->size?></div>
-                                            </div>
-                                            <div class="col-2">
-                                                <div class="cart_item_title">Quantity</div>
-                                                <div class="cart_item_text"><?=$model->quantity?></div>
-                                            </div>
-                                            <div class="col-2">
-                                                <div class="cart_item_title">Price</div>
-                                                <div class="cart_item_text font-italic">฿ <?=$model->price?></div>
-                                                
-                                            </div>
-                                            
-                                                
-                                            
                                         </div>
                                         
-                                    </li>
-                                
-                                    
-                                </ul>
-                                
 
-                                <?php 
-                                
-                                
-                            } ?>
-                            
 
-                        </div>
-                        <div class="order_total">
-                            <div class="order_total_content text-md-right">
-                                <div class="order_total_title">Order Total:</div>
-                                <div class="order_total_amount font-italic">฿ <?= $total?></div>
-                            </div>
-                        </div>
-                        <div class="cart_buttons"><button type="button" class="button cart_button_checkout ">CHECK OUT</button> </div>
+                                    </div>
+
+                                </li>
+
+
+                            </ul>
+
+
+                        <?php
+
+
+                        } ?>
+                        <?php if (!empty($model)) { ?>
+                            <div class="text-right text-muted">Amount <?= $countItem ?> items</div>
+                        <?php } ?>
+
+
+
                     </div>
+                    <div class="order_total">
+                        <div class="order_total_content text-md-right">
+                            <div class="order_total_title">Order Total:</div>
+                            <div class="order_total_amount font-italic">฿ <?= $total ?></div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <?php
+                        if ($countItem == 0) {
+                            echo '
+                                    <div class="cart_buttons">
+                                        <a href="' . Url::to(['/']) . '" class="button cart_button_clear">Continue Shopping</a>
+                                    </div>
+                                ';
+                        } else {
+                            echo '
+                                    <div class="cart_buttons">
+                                        <a href="' . Url::to(['/']) . '" class="button cart_button_clear">Continue Shopping</a>
+                                        <a href="' . Url::to(['/checkout']) . '" class="button cart_button_checkout">Checkout</a>
+                                    </div>
+                                    
+
+                                ';
+                        }
+                        ?>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 
 
 
 </div>
-
