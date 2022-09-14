@@ -289,7 +289,7 @@ $countItem = 0;
 
                         } ?>
                         <?php if (!empty($model)) { ?>
-                            <div class="text-right text-muted">Amount <?= $countItem ?> items</div>
+                            <div class="text-right text-muted font-italic">Amount <?= $countItem ?> items</div>
                         <?php } ?>
 
 
