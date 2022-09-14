@@ -32,8 +32,6 @@ use app\models\Colors;
             // 'required' => true,
         ]
         )
-        
-    
     ?>
     <!-- ->dropDownList($size_items,
             [
@@ -58,10 +56,6 @@ use app\models\Colors;
         
 
     ?>
-
-   
-
-
     <?= $form->field($model, 'price') ?>
 
     <?= $form->field($model, 'status')
@@ -72,10 +66,6 @@ use app\models\Colors;
         
             
     ?>
-
-    
-    
-   
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) 

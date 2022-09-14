@@ -1,12 +1,13 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
 use app\models\Movies;
 use app\models\MoviesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * MoviesController implements the CRUD actions for Movies model.
@@ -73,8 +74,6 @@ class MoviesController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', '_id' => (string) $model->_id]);
             }
-        } else {
-            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
