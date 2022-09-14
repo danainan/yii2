@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'movies_rate',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Movies $model, $key, $index, $column) {
+                'urlCreator' => function ($action,$model, $key, $index, $column) {
                     return Url::toRoute([$action, '_id' => (string) $model->_id]);
                  }
             ],
