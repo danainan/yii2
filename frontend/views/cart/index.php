@@ -245,7 +245,7 @@ $countItem = 0;
                                     <div class="cart_item_image"><img src="<?= $product->image_url ?>" alt=""></div>
                                     <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
                                         <div class="col-4">
-                                            <div class="cart_item_title">Name</div>
+                                            <div class="cart_item_title">Name test iffans</div>
                                             <td class="cart_item_text"><?= $product->product_name ?></td>
                                         </div>
                                         <div class="col-2">
