@@ -10,11 +10,22 @@ use yii\widgets\ActiveForm;
 
 <div class="movies-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+        'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'movies_name') ?>
 
-    <?= $form->field($model, 'movies_img') ?>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well text-center">
+          <?= Html::img($model->getPhotoViewer(),['style'=>'width:100px;','class'=>'img-rounded']); ?>
+        </div>
+      </div>
+      <div class="col-md-10">
+            <?= $form->field($model, 'movies_img')->fileInput() ?>
+      </div>
+    </div>
 
     <?= $form->field($model, 'descriptions') ?>
 

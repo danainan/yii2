@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Movies */
 
-$this->title = $model->_id;
+$this->title = $model->movies_name;
 $this->params['breadcrumbs'][] = ['label' => 'Movies', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -31,7 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             '_id',
             'movies_name',
-            'movies_img',
+            [
+                'format'=>'raw',
+                'attribute'=>'movies_img',
+                'value'=>Html::img($model->photoViewer,['class'=>'img-thumbnail','style'=>'width:200px;'])
+            ],
             'descriptions',
             'categories',
             'actors',

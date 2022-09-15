@@ -70,15 +70,24 @@ class MoviesController extends Controller
     {
         $model = new Movies();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', '_id' => (string) $model->_id]);
-            }
-        }
+        // if ($this->request->isPost) {
+        //     if ($model->load($this->request->post()) && $model->save()) {
+        //         return $this->redirect(['view', '_id' => (string) $model->_id]);
+        //     }
+        // }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        // return $this->render('create', [
+        //     'model' => $model,
+        // ]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->movies_img = $model->upload($model,'movies_img');
+            $model->save();
+            return $this->redirect(['view', '_id' => (string)$model->_id]);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
@@ -92,13 +101,22 @@ class MoviesController extends Controller
     {
         $model = $this->findModel($_id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', '_id' => (string) $model->_id]);
-        }
+        // if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        //     return $this->redirect(['view', '_id' => (string) $model->_id]);
+        // }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        // return $this->render('update', [
+        //     'model' => $model,
+        // ]);
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $model->movies_img = $model->upload($model,'movies_img');
+            $model->save();
+            return $this->redirect(['view', '_id' => (string)$model->_id]);
+        }  else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
     }
 
     /**
