@@ -28,9 +28,11 @@ $this->title = 'My Yii Application';
 <div class="site-index">
 
 
-
     <div>
-        <h1>My Movies</h1>
+        
+    </div>
+    <div>
+        <h1>Movies list</h1>
         <div class="row">
             <?php foreach ($movies as $movie) : ?>
                 <div class="col-md-3">
@@ -46,7 +48,7 @@ $this->title = 'My Yii Application';
             <?php endforeach; ?>
         </div>
     </div>
-
+    
     
 
 </div>

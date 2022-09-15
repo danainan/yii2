@@ -1,5 +1,5 @@
 <?php
-
+use app\models\Moviecategories;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'category_type',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, moviecategories $model, $key, $index, $column) {
+                'urlCreator' => function ($action, $model, $key, $index, $column) {
                     return Url::toRoute([$action, '_id' => (string) $model->_id]);
                  }
             ],
