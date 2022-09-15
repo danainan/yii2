@@ -74,14 +74,12 @@ class StudioController extends Controller
                 return $this->redirect(['view', '_id' => (string) $model->_id]);
             }
         }
-        
+
         return $this->render('create', [
             'model' => $model,
         ]);
     }
     
-
-
     /**
      * Updates an existing Studio model.
      * If update is successful, the browser will be redirected to the 'view' page.
