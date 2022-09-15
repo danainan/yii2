@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // '_id',
+            '_id',
             'movies_name',
             [
                 'options'=>['style'=>'width:150px;'],
