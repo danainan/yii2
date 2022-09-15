@@ -38,8 +38,8 @@ $this->title = 'My Yii Application';
                         <img src="<?= $movie->photoViewer ?>" class="movie-img card-img-top" alt="<?= $movie->_id?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $movie->movies_name ?></h5>
-                            <p class="card-text"><?= $movie->descriptions ?></p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <p class="card-text text-truncate"><?= $movie->descriptions ?></p>
+                            <a href="#" class="btn btn-primary btn-block">DETAIL</a>
                         </div>
                     </div>
                 </div>
