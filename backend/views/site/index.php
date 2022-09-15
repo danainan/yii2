@@ -3,8 +3,10 @@
 /** @var yii\web\View $this */
 
 use app\models\Movies;
+use app\models\Moviecategories;
 
 $movies = Movies::find()->all();
+$moviecategories = Moviecategories::find()->all();
 
 $this->title = 'My Yii Application';
 
@@ -22,14 +24,24 @@ $this->title = 'My Yii Application';
         width: 100%;
         height: 200px;
     }
-       
-    
 </style>
 <div class="site-index">
 
 
     <div>
-        
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Categories
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+                <?php foreach ($moviecategories as $category) : ?>
+                    <a class="dropdown-item" href="#"><?= $category->category_type ?></a>
+                <?php endforeach; ?>
+                
+                
+                
+            </div>
+        </div>
     </div>
     <div>
         <h1>Movies list</h1>
@@ -37,19 +49,19 @@ $this->title = 'My Yii Application';
             <?php foreach ($movies as $movie) : ?>
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
-                        <img src="<?= $movie->photoViewer ?>" class="movie-img card-img-top" alt="<?= $movie->_id?>">
+                        <img src="<?= $movie->photoViewer ?>" class="movie-img card-img-top" alt="<?= $movie->_id ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?= $movie->movies_name ?></h5>
                             <p class="card-text text-truncate"><?= $movie->descriptions ?></p>
-                            <a href="index.php?r=movies/view&_id=<?= $movie->_id ?>"" class="btn btn-primary btn-block">DETAIL</a>
+                            <a href="index.php?r=movies/view&_id=<?= $movie->_id ?>"" class=" btn btn-primary btn-block">DETAIL</a>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
-    
-    
+
+
 
 </div>
 
