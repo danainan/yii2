@@ -44,7 +44,11 @@ $this->title = 'My Yii Application';
 
                 </div>
             </div>
+            <?php
+                $year = Movies::find()->where(['years'=>'2022'])->all();
+                var_dump($year);
 
+            ?>
             <div class="btn-group">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Years: All (+<?= Movies::find()->count() ?>)
@@ -59,7 +63,7 @@ $this->title = 'My Yii Application';
             </div>
         </div>
         
-        <div class="row mt-5">
+        <div class="row mt-3">
             <?php
             if (isset($_GET['categories'])) {
                 echo '<h4 style="color:red"> categories ' . $_GET['categories'] . '</h4>';
