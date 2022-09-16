@@ -34,7 +34,7 @@ $this->title = 'My Yii Application';
         <div>
             <div class="btn-group">
                 <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Categories: All (+<?= Movies::find()->count() ?>)
+                    Categories
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="/backend/web/index.php" class="dropdown-item">All (+<?= Movies::find()->count() ?>)</a>
@@ -44,23 +44,9 @@ $this->title = 'My Yii Application';
 
                 </div>
             </div>
-            <?php
-                $year = Movies::find()->where(['years'=>'2022'])->all();
-                var_dump($year);
+            
 
-            ?>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Years: All (+<?= Movies::find()->count() ?>)
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="/backend/web/index.php" class="dropdown-item">All (+<?= Movies::find()->count() ?>)</a>
-                    <?php foreach ($moviecategories as $type) : ?>
-                        <a class="dropdown-item" href="/backend/web/index.php?_id=<?= $type['_id']; ?>&categories=<?= $type->category_type ?>"><?= $type->category_type; ?> (+<?= Movies::find()->where(['categories' => $type->category_type])->count() ?>)</a>
-                    <?php endforeach; ?>
-
-                </div>
-            </div>
+            
         </div>
         
         <div class="row mt-3">
