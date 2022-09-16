@@ -75,4 +75,7 @@ class Movies extends \yii\mongodb\ActiveRecord
             'ratting' => 'Ratting',
         ];
     }
+    public function getTableSchema(){
+        return false;
+    }
 }
