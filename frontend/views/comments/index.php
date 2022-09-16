@@ -6,18 +6,18 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\YearsSearch */
+/* @var $searchModel app\models\CommentsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Years';
+$this->title = 'Comments';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="years-index">
+<div class="comments-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Years', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Comments', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -29,10 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             '_id',
-            'years',
+            'comment',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, $model, $key, $index, $column) {
+                'urlCreator' => function ($action, Comments $model, $key, $index, $column) {
                     return Url::toRoute([$action, '_id' => (string) $model->_id]);
                  }
             ],

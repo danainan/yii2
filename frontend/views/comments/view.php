@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Years */
+/* @var $model app\models\Comments */
 
 $this->title = $model->_id;
-$this->params['breadcrumbs'][] = ['label' => 'Years', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="years-view">
+<div class="comments-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             '_id',
-            'years',
+            'comment',
         ],
     ]) ?>
 

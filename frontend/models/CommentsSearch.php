@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Years;
+use app\models\Comments;
 
 /**
- * YearsSearch represents the model behind the search form of `app\models\Years`.
+ * CommentsSearch represents the model behind the search form of `app\models\Comments`.
  */
-class YearsSearch extends Years
+class CommentsSearch extends Comments
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class YearsSearch extends Years
     public function rules()
     {
         return [
-            [['_id', 'years'], 'safe'],
+            [['_id', 'comment'], 'safe'],
         ];
     }
 
@@ -39,7 +39,7 @@ class YearsSearch extends Years
      */
     public function search($params)
     {
-        $query = Years::find();
+        $query = Comments::find();
 
         // add conditions that should always apply here
 
@@ -57,7 +57,7 @@ class YearsSearch extends Years
 
         // grid filtering conditions
         $query->andFilterWhere(['like', '_id', $this->_id])
-            ->andFilterWhere(['like', 'years', $this->years]);
+            ->andFilterWhere(['like', 'comment', $this->comment]);
 
         return $dataProvider;
     }

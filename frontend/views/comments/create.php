@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Years */
+/* @var $model app\models\Comments */
 
-$this->title = 'Create Years';
-$this->params['breadcrumbs'][] = ['label' => 'Years', 'url' => ['index']];
+$this->title = 'Create Comments';
+$this->params['breadcrumbs'][] = ['label' => 'Comments', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="years-create">
+<div class="comments-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

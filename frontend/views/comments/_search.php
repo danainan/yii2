@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\YearsSearch */
+/* @var $model app\models\CommentsSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="years-search">
+<div class="comments-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, '_id') ?>
 
-    <?= $form->field($model, 'years') ?>
+    <?= $form->field($model, 'comment') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

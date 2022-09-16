@@ -5,19 +5,19 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for collection "years".
+ * This is the model class for collection "comments".
  *
  * @property \MongoDB\BSON\ObjectID|string $_id
- * @property mixed $years
+ * @property mixed $comment
  */
-class Years extends \yii\mongodb\ActiveRecord
+class Comments extends \yii\mongodb\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function collectionName()
     {
-        return 'years';
+        return 'comments';
     }
 
     /**
@@ -27,7 +27,7 @@ class Years extends \yii\mongodb\ActiveRecord
     {
         return [
             '_id',
-            'years',
+            'comment',
         ];
     }
 
@@ -37,10 +37,7 @@ class Years extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['years', 'years'], 'required'],
-            [['years', 'years'], 'integer'],
-            
-            
+            [['comment'], 'safe']
         ];
     }
 
@@ -51,7 +48,7 @@ class Years extends \yii\mongodb\ActiveRecord
     {
         return [
             '_id' => 'ID',
-            'years' => 'Years',
+            'comment' => 'Comment',
         ];
     }
     public function getTableSchema(){

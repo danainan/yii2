@@ -1,17 +1,17 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
-use app\models\Years;
-use app\models\YearsSearch;
+use app\models\Comments;
+use app\models\CommentsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * YearsController implements the CRUD actions for Years model.
+ * CommentsController implements the CRUD actions for Comments model.
  */
-class YearsController extends Controller
+class CommentsController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,13 +32,13 @@ class YearsController extends Controller
     }
 
     /**
-     * Lists all Years models.
+     * Lists all Comments models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new YearsSearch();
+        $searchModel = new CommentsSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -48,7 +48,7 @@ class YearsController extends Controller
     }
 
     /**
-     * Displays a single Years model.
+     * Displays a single Comments model.
      * @param int $_id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -61,18 +61,20 @@ class YearsController extends Controller
     }
 
     /**
-     * Creates a new Years model.
+     * Creates a new Comments model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Years();
+        $model = new Comments();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', '_id' => (string) $model->_id]);
             }
+        } else {
+            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
@@ -81,7 +83,7 @@ class YearsController extends Controller
     }
 
     /**
-     * Updates an existing Years model.
+     * Updates an existing Comments model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $_id ID
      * @return string|\yii\web\Response
@@ -101,7 +103,7 @@ class YearsController extends Controller
     }
 
     /**
-     * Deletes an existing Years model.
+     * Deletes an existing Comments model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $_id ID
      * @return \yii\web\Response
@@ -115,15 +117,15 @@ class YearsController extends Controller
     }
 
     /**
-     * Finds the Years model based on its primary key value.
+     * Finds the Comments model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $_id ID
-     * @return Years the loaded model
+     * @return Comments the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($_id)
     {
-        if (($model = Years::findOne(['_id' => $_id])) !== null) {
+        if (($model = Comments::findOne(['_id' => $_id])) !== null) {
             return $model;
         }
 

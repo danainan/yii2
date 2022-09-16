@@ -4,15 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Years */
+/* @var $model app\models\Comments */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="years-form">
+<div class="comments-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'years') ?>
+    <?= $form->field($model, 'comment') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
