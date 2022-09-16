@@ -50,7 +50,7 @@ $this->title = 'My Yii Application';
 
             if(isset($_GET['categories'])){
                 echo '<h4 style="color:red"> categories ' .$_GET['categories'] .'</h4>';
-
+                $movies = Movies::find()->where(['categories'=>$_GET['categories']])->all();
             }
             foreach ($movies as $movie) : ?>
                 <div class="row">
