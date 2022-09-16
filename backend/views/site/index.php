@@ -28,32 +28,49 @@ $this->title = 'My Yii Application';
 </style>
 <div class="site-index">
 
-        
-    
-        <div class="row">
-            <div class="col">
-                <div class="list-group">
-                    <a href="/backend/web/index.php" class="list-group-item list-group-item-action active" aria-current="true">
-                        Categories: All (+<?= Movies::find()->count()?>)
-                    </a>
-                    <?php foreach ($moviecategories as $type) {  ?>
-                        <a href="/backend/web/index.php?_id=<?= $type['_id'];?>&categories=<?=$type->category_type?>" class="list-group-item list-group-item-action"> <?= $type->category_type; ?> (+<?= Movies::find()->where(['categories'=>$type->category_type])->count()?>)</a>
-                    <?php } ?>
 
-                    </div>
+
+    <div>
+        <div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories: All (+<?= Movies::find()->count() ?>)
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="/backend/web/index.php" class="dropdown-item">All (+<?= Movies::find()->count() ?>)</a>
+                    <?php foreach ($moviecategories as $type) : ?>
+                        <a class="dropdown-item" href="/backend/web/index.php?_id=<?= $type['_id']; ?>&categories=<?= $type->category_type ?>"><?= $type->category_type; ?> (+<?= Movies::find()->where(['categories' => $type->category_type])->count() ?>)</a>
+                    <?php endforeach; ?>
+
                 </div>
             </div>
-           
-        <div>               
-        <?php
-            
 
-            if(isset($_GET['categories'])){
-                echo '<h4 style="color:red"> categories ' .$_GET['categories'] .'</h4>';
-                $movies = Movies::find()->where(['categories'=>$_GET['categories']])->all();
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Years: All (+<?= Movies::find()->count() ?>)
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="/backend/web/index.php" class="dropdown-item">All (+<?= Movies::find()->count() ?>)</a>
+                    <?php foreach ($moviecategories as $type) : ?>
+                        <a class="dropdown-item" href="/backend/web/index.php?_id=<?= $type['_id']; ?>&categories=<?= $type->category_type ?>"><?= $type->category_type; ?> (+<?= Movies::find()->where(['categories' => $type->category_type])->count() ?>)</a>
+                    <?php endforeach; ?>
+
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            <?php
+            if (isset($_GET['categories'])) {
+                echo '<h4 style="color:red"> categories ' . $_GET['categories'] . '</h4>';
+                $movies = Movies::find()->where(['categories' => $_GET['categories']])->all();
             }
+            ?>
+        </div>
+        <div class="row mt-5">
+        <?php
             foreach ($movies as $movie) : ?>
-                <div class="row">
+
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
                         <img src="<?= $movie->photoViewer ?>" class="movie-img card-img-top" alt="<?= $movie->_id ?>">
@@ -63,14 +80,13 @@ $this->title = 'My Yii Application';
                             <a href="index.php?r=movies/view&_id=<?= $movie->_id ?>"" class=" btn btn-primary btn-block">DETAIL</a>
                         </div>
                     </div>
-                
+                </div>
+
             <?php endforeach; ?>
-            </div>
-            </div>
-            </div> 
+                
         </div>
+
+
+
     </div>
 </div>
-
-            
-        
