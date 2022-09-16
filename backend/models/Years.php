@@ -37,7 +37,10 @@ class Years extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['years'], 'safe']
+            [['years', 'years'], 'required'],
+            [['years', 'years'], 'integer'],
+            
+            
         ];
     }
 

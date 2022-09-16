@@ -1,6 +1,6 @@
 <?php
 
-namespace app\controllers;
+namespace backend\controllers;
 
 use app\models\Years;
 use app\models\YearsSearch;
@@ -73,8 +73,6 @@ class YearsController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', '_id' => (string) $model->_id]);
             }
-        } else {
-            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
