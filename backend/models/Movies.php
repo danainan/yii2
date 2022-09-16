@@ -107,14 +107,6 @@ class Movies extends \yii\mongodb\ActiveRecord
       public function getPhotoViewer(){
         return empty($this->movies_img) ? Yii::getAlias('@web').'/img/none.png' : $this->getUploadUrl().$this->movies_img;
       }
-      public function removePhoto($fileName){
-        if(!empty($fileName)){
-          $file = $this->getUploadPath().$fileName;
-          if(file_exists($file)){
-            unlink($file);
-          }
-        }
-        
-      }
+      
 
 }

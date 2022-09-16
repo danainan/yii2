@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Moviecategories;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Movies */
@@ -27,9 +29,12 @@ use yii\widgets\ActiveForm;
       </div>
     </div>
 
-    <?= $form->field($model, 'descriptions') ?>
+    <?= $form->field($model, 'descriptions')->textarea(['rows' => 5]) ?>
 
-    <?= $form->field($model, 'categories') ?>
+    <?php $moviescategories = ArrayHelper::map(Moviecategories::find()->all(), 'category_type', 'category_type'); ?>
+
+    <?= $form->field($model, 'categories')->dropDownList($moviescategories) ?>           
+        
 
     <?= $form->field($model, 'actors') ?>
 

@@ -79,9 +79,12 @@ class MoviesController extends Controller
         // return $this->render('create', [
         //     'model' => $model,
         // ]);
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        //&& $model->validate()
+
+        if ($model->load(Yii::$app->request->post())) {
             $model->movies_img = $model->upload($model,'movies_img');
             $model->save();
+            Yii::$app->session->setFlash('success', '['.$model->movies_name.'] created successfully.');
             return $this->redirect(['view', '_id' => (string)$model->_id]);
         } else {
             return $this->render('create', [
@@ -108,9 +111,10 @@ class MoviesController extends Controller
         // return $this->render('update', [
         //     'model' => $model,
         // ]);
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+        if ($model->load(Yii::$app->request->post())) {
             $model->movies_img = $model->upload($model,'movies_img');
             $model->save();
+            Yii::$app->session->setFlash('success', '['.$model->movies_name.'] created successfully.');
             return $this->redirect(['view', '_id' => (string)$model->_id]);
         }  else {
             return $this->render('update', [
