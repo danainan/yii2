@@ -45,18 +45,6 @@ $this->title = 'My Yii Application';
                 </div>
             </div>
 
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Years
-                </button>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <a href="/backend/web/index.php" class="dropdown-item">All (+<?= Movies::find()->count() ?>)</a>
-                    <?php foreach ($moviecategories as $type) : ?>
-                        <a class="dropdown-item" href="/backend/web/index.php?_id=<?= $type['_id']; ?>&categories2=<?= $type->category_type ?>"><?= $type->category_type; ?> (+<?= Movies::find()->where(['categories2' => $type->category_type])->count() ?>)</a>
-                    <?php endforeach; ?>
-
-                </div>
-            </div>
             
 
                         
