@@ -7,6 +7,9 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use app\models\Bookmark;
 
+
+
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BookmarkSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -229,7 +232,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <?php foreach ($bookmark as $model) {
 
 
-                            $movie = Movies::findOne(new MongoDB\BSON\ObjectID($model->movies_id));
+                            $movie = Movies::findOne(new MongoDB\BSON\ObjectID($model->movie_id));
                         ?>
 
                             <ul class="cart_list">

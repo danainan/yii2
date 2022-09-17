@@ -2,9 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Moviecategories;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Movies */
+
+$moviecategories = Moviecategories::find()->all();
+$moviecategories as $categories;
 
 $this->title = $model->movies_name;
 $this->params['breadcrumbs'][] = ['label' => 'Movies', 'url' => ['index']];
@@ -36,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'movies_img',
                 'value'=>Html::img($model->photoViewer,['class'=>'img-thumbnail','style'=>'width:200px;'])
             ],
+            
             'descriptions',
             'categories',
             'actors',
