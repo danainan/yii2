@@ -222,7 +222,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
                     <div class="cart_title">
-                        <span>Shopping Cart</span>
+                        <span>Bookmarks</span>
 
 
                     </div>

@@ -94,11 +94,15 @@ $this->params['breadcrumbs'][] = $this->title;
                 </aside>
                 <aside class="col-sm-6">
                 <div>    
-                    <button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i> Bookmark</button>
                     <?php
+                    if (Yii::$app->user->isGuest) {
                         echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
-                        echo $form->field($bookmarkModel, 'user_id')->hiddenInput(['value'=>Yii::$app->user->identity->id])->label(false)
-                    
+                    }else {
+                        echo '<button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i> Bookmark</button>';
+                        echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
+                        echo $form->field($bookmarkModel, 'user_id')->hiddenInput(['value'=>Yii::$app->user->identity->id])->label(false);
+                    }
+
                     ?>
                 </div>
                     <article class="card-body p-5">

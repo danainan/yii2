@@ -91,8 +91,8 @@ class MoviesController extends Controller
                 $bookmarkModel->save();
             
             
-            Yii::$app->session->setFlash('success', ' Add to cart successfully.');
-            return $this->redirect(['cart/index']);
+            Yii::$app->session->setFlash('success', ' Add to bookmark successfully.');
+            return $this->redirect(['bookmark/index']);
         }
         return $this->render('view', [
             'model' => $this->findModel($_id),
