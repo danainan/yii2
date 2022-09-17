@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     
-    <link rel="shortcut icon" href="https://library.kissclipart.com/20191014/lyq/kissclipart-clip-art-cartoon-potato-fictional-character-solanu-a066b2e3f56e2c68.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://i.pinimg.com/736x/ae/31/08/ae3108a2d87f00ca12324e3e4c2cd81d.jpg" type="image/x-icon">
     
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -56,7 +56,11 @@ AppAsset::register($this);
 
             'brandLabel' => '
                         <span class="col-md-12">Rottens Potatoes</span>
+<<<<<<< HEAD
                         <span class="float-left"><img src="https://library.kissclipart.com/20191014/lyq/kissclipart-clip-art-cartoon-potato-fictional-character-solanu-a066b2e3f56e2c68.png" style="width:50px;"/></span>
+=======
+                        <span class="float-left"><img src="https://i.pinimg.com/736x/ae/31/08/ae3108a2d87f00ca12324e3e4c2cd81d.jpg" style="width:38px;"/></span>
+>>>>>>> aec1967010e5eb27b24af49823d7f6183a045746
                         
                         <div class="row"/>',
         ]);
