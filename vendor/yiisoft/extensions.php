@@ -84,4 +84,22 @@ return array (
       '@cyneek/yii2/widget/urlparser' => $vendorDir . '/cyneek/yii2-widget-urlparser',
     ),
   ),
+  'et-soft/yii2-widget-select-year' => 
+  array (
+    'name' => 'et-soft/yii2-widget-select-year',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@etsoft/widgets' => $vendorDir . '/et-soft/yii2-widget-select-year',
+    ),
+  ),
+  'thyseus/yii2-favorites' => 
+  array (
+    'name' => 'thyseus/yii2-favorites',
+    'version' => '0.1.0.0',
+    'alias' => 
+    array (
+      '@thyseus/favorites' => $vendorDir . '/thyseus/yii2-favorites',
+    ),
+  ),
 );

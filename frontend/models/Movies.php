@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+
+
 use Yii;
 
 /**
@@ -20,6 +22,7 @@ use Yii;
  */
 class Movies extends \yii\mongodb\ActiveRecord
 {
+    public $upload_foler = '../../backend/web/uploads';
     /**
      * {@inheritdoc}
      */
@@ -42,8 +45,8 @@ class Movies extends \yii\mongodb\ActiveRecord
             'actors',
             'years',
             'movies_rate',
-            'comment',
-            'ratting',
+            // 'comment',
+            // 'ratting',
         ];
     }
 
@@ -53,7 +56,13 @@ class Movies extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['movies_name', 'movies_img', 'descriptions', 'categories', 'actors', 'years', 'movies_rate', 'comment', 'ratting'], 'safe']
+            [['movies_name', 'descriptions', 'categories', 'actors', 'years', 'movies_rate'], 'required'],
+            [['movies_name', 'descriptions', 'categories', 'actors', 'years', 'movies_rate'], 'string'],
+            [['movies_img'], 'file',
+                'skipOnEmpty' => true, 
+                'extensions' => 'jpg, png'
+            
+            ], 
         ];
     }
 
@@ -71,11 +80,22 @@ class Movies extends \yii\mongodb\ActiveRecord
             'actors' => 'Actors',
             'years' => 'Years',
             'movies_rate' => 'Movies Rate',
-            'comment' => 'Comment',
-            'ratting' => 'Ratting',
+            
         ];
     }
     public function getTableSchema(){
         return false;
     }
+
+    public function getUploadPath(){
+        return Yii::getAlias('@webroot').'/'.$this->upload_foler.'/';
+      }
+      
+      public function getUploadUrl(){
+        return Yii::getAlias('@web').'/'.$this->upload_foler.'/';
+      }
+      
+      public function getPhotoViewer(){
+        return empty($this->movies_img) ? Yii::getAlias('/backend/web/uploads/').'/img/none.png' : $this->getUploadUrl().$this->movies_img;
+      }
 }

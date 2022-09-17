@@ -40,13 +40,20 @@ class ComposerStaticInitd8e93d9e6de6f18779700bfb6b4d8998
             'yii\\' => 4,
             'yii2mod\\alert\\' => 14,
         ),
+        't' => 
+        array (
+            'thyseus\\favorites\\' => 18,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
         ),
+        'e' => 
+        array (
+            'etsoft\\widgets\\' => 15,
+        ),
         'c' => 
         array (
-            'cyneek\\yii2\\widget\\urlparser\\' => 29,
             'cebe\\markdown\\' => 14,
         ),
         'W' => 
@@ -149,15 +156,19 @@ class ComposerStaticInitd8e93d9e6de6f18779700bfb6b4d8998
         array (
             0 => __DIR__ . '/..' . '/yii2mod/yii2-sweet-alert',
         ),
+        'thyseus\\favorites\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/thyseus/yii2-favorites',
+        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
-        'cyneek\\yii2\\widget\\urlparser\\' => 
+        'etsoft\\widgets\\' => 
         array (
-            0 => __DIR__ . '/..' . '/cyneek/yii2-widget-urlparser',
+            0 => __DIR__ . '/..' . '/et-soft/yii2-widget-select-year',
         ),
         'cebe\\markdown\\' => 
         array (

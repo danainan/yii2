@@ -35,7 +35,7 @@ use yii\helpers\ArrayHelper;
 
     <?php $moviescategories = ArrayHelper::map(Moviecategories::find()->all(), 'category_type', 'category_type'); ?>
     <?= $form->field($model, 'categories')->dropDownList($moviescategories) ?>           
-        
+    <?= $form->field($model, 'years') ?>
 
     <?= $form->field($model, 'actors') ?>
 

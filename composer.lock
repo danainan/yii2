@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "086e2009022697c649c4cfab135dfa36",
+    "content-hash": "92acb04c358f834d6983384d35337d96",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -327,6 +327,50 @@
                 }
             ],
             "time": "2022-06-18T20:57:19+00:00"
+        },
+        {
+            "name": "et-soft/yii2-widget-select-year",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/et-soft/yii2-widget-select-year.git",
+                "reference": "10210cf42b9e79ae14d053f10b5de2a6432ab473"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/et-soft/yii2-widget-select-year/zipball/10210cf42b9e79ae14d053f10b5de2a6432ab473",
+                "reference": "10210cf42b9e79ae14d053f10b5de2a6432ab473",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "etsoft\\widgets\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Evgeny Titov",
+                    "email": "etsoft2015@gmail.com"
+                }
+            ],
+            "description": "Widget for Yii2, created selectbox field with years",
+            "homepage": "https://github.com/et-soft/yii2-widget-select-year",
+            "keywords": [
+                "extension",
+                "form",
+                "widget",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/et-soft/yii2-widget-select-year/issues",
+                "source": "https://github.com/et-soft/yii2-widget-select-year/tree/master"
+            },
+            "time": "2015-08-02T07:05:19+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -929,6 +973,53 @@
                 }
             ],
             "time": "2022-05-24T11:49:31+00:00"
+        },
+        {
+            "name": "thyseus/yii2-favorites",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thyseus/yii2-favorites.git",
+                "reference": "bc15750770eda8e22cfb1931d4e6e1c9b204ca73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thyseus/yii2-favorites/zipball/bc15750770eda8e22cfb1931d4e6e1c9b204ca73",
+                "reference": "bc15750770eda8e22cfb1931d4e6e1c9b204ca73",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0.0",
+                "yiisoft/yii2-bootstrap": "^2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "thyseus\\favorites\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Herbert Maschke",
+                    "email": "thyseus@gmail.com",
+                    "homepage": "https://github.com/thyseus/yii2-favorites"
+                }
+            ],
+            "description": "General favorite management for Yii2",
+            "keywords": [
+                "yii2",
+                "yii2-favorites"
+            ],
+            "support": {
+                "forum": "https://gitter.im/thyseus/yii2-favorites",
+                "issues": "https://github.com/thyseus/yii2-favorites/issues?state=open",
+                "source": "https://github.com/thyseus/yii2-favorites"
+            },
+            "time": "2017-02-15T09:54:41+00:00"
         },
         {
             "name": "yii2mod/yii2-sweet-alert",
