@@ -1,5 +1,6 @@
 <?php
 
+use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
@@ -75,6 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
 
         <div class="card">
+            
             <div class="row">
                 <aside class="col-sm-6 border-right">
                     <article class="gallery-wrap">
@@ -89,6 +91,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 <aside class="col-sm-6">
                    
                     <article class="card-body p-5">
+                        <?php echo
+                            NavBar::widget([
+                                'options' => ['class' => 'navbar-nav navbar-right'],
+                                'encodeLabels' => false,
+                                'items' => [
+                                    ['label' => '<span class="glyphicon glyphicon-bookmark"></span>', 'options' => ['class' => 'favorites-menu clickable', 'style' => 'cursor: pointer;'], 'url' => false, 'visible' => !$user->isGuest, 'items' => ['' => '']],
+                                  ]
+                                ]);
+                            
+                        ?>
                         <h3 class="title mb-3"><?= Html::encode($this->title) ?></h3>
 
                         <p class="price-detail-wrap">
