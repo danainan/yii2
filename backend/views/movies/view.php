@@ -8,7 +8,7 @@ use app\models\Moviecategories;
 /* @var $model app\models\Movies */
 
 $moviecategories = Moviecategories::find()->all();
-$moviecategories as $categories;
+
 
 $this->title = $model->movies_name;
 $this->params['breadcrumbs'][] = ['label' => 'Movies', 'url' => ['index']];

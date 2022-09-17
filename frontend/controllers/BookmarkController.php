@@ -7,6 +7,7 @@ use app\models\BookmarkSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * BookmarkController implements the CRUD actions for Bookmark model.
@@ -38,12 +39,10 @@ class BookmarkController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new BookmarkSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $bookmark = Bookmark::find()->where(["user_id"=>(String)Yii::$app->user->identity->_id])->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'bookmark' => $bookmark,
         ]);
     }
 
