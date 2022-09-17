@@ -56,11 +56,9 @@ AppAsset::register($this);
 
             'brandLabel' => '
                         <span class="col-md-12">Rottens Potatoes</span>
-<<<<<<< HEAD
-                        <span class="float-left"><img src="https://library.kissclipart.com/20191014/lyq/kissclipart-clip-art-cartoon-potato-fictional-character-solanu-a066b2e3f56e2c68.png" style="width:50px;"/></span>
-=======
-                        <span class="float-left"><img src="https://i.pinimg.com/736x/ae/31/08/ae3108a2d87f00ca12324e3e4c2cd81d.jpg" style="width:38px;"/></span>
->>>>>>> aec1967010e5eb27b24af49823d7f6183a045746
+
+                        <span class="float-left"><img src="https://i.pinimg.com/736x/ae/31/08/ae3108a2d87f00ca12324e3e4c2cd81d.jpg" style="width:50px;"/></span>
+
                         
                         <div class="row"/>',
         ]);
@@ -74,7 +72,8 @@ AppAsset::register($this);
             $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
-            // $menuItems[] =  ['label' => 'Cart', 'url' => ['/cart/index']];
+            $menuItems[] =  ['label' => 'Cart', 'url' => ['/cart/index']];
+            $menuItems[] =  ['label' => 'Bookmark', 'url' => ['/bookmark/index']];
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(

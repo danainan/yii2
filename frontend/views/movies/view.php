@@ -4,7 +4,7 @@ use app\models\Movies;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
-use thyseus\favorites\models\Favorite;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Movies */
@@ -93,8 +93,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     </article>
                 </aside>
                 <aside class="col-sm-6">
-                <button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i> Bookmark</button>
-
+                <div>    
+                    <button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i> Bookmark</button>
+                    <?php
+                        echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
+                        echo $form->field($bookmarkModel, 'user_id')->hiddenInput(['value'=>Yii::$app->user->identity->id])->label(false)
+                    
+                    ?>
+                </div>
                     <article class="card-body p-5">
                         
                         <h3 class="title mb-3"><?= Html::encode($this->title) ?></h3>

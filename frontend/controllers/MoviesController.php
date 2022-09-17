@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
+use app\models\Bookmark;
 
 /**
  * MoviesController implements the CRUD actions for Movies model.
@@ -56,10 +57,51 @@ class MoviesController extends Controller
      */
     public function actionView($_id)
     {
+        // $bookmarkModel = new Bookmark();
+        // if ($this->request->isPost && $bookmarkModel->load($this->request->post())) {
+
+        //     $bookmark = Movies::find()->where(["user_id"=>(String)Yii::$app->user->identity->_id])->where(["movie_id"=>$bookmarkModel->movie_id])->one();
+
+        //     if (!empty($bookmark)) {
+        //         $bookmarkModel = Movies::findOne(["_id" => $bookmark->_id]);
+        //         // $bookmarkModel->delete();
+        //     } else {
+        //         // $bookmarkModel->user_id = (String)Yii::$app->user->identity->_id;
+        //         $bookmarkModel->save();
+
+            
+            
+        //     Yii::$app->session->setFlash('success', ' Add to bookmark successfully.');
+        //     return $this->redirect(['bookmark/index']);
+        // }
+        // return $this->render('view', [
+        //     'model' => $this->findModel($_id),
+        //     'movie_id' => $_id,
+        //     'bookmarkModel' => $bookmarkModel
+        // ]);
+        // }
+        $bookmarkModel = new Bookmark();
+        if ($this->request->isPost && $bookmarkModel->load($this->request->post())) {
+
+            $bookmark = Movies::find()->where(["user_id"=>(String)Yii::$app->user->identity->_id])->where(["product_id"=>$bookmarkModel->movie_id])->one();
+
+            if (!empty($bookmark)) {
+                $bookmarkModel = Bookmark::findOne(["_id" => $bookmark->_id]);
+            }
+                $bookmarkModel->save();
+            
+            
+            Yii::$app->session->setFlash('success', ' Add to cart successfully.');
+            return $this->redirect(['cart/index']);
+        }
         return $this->render('view', [
             'model' => $this->findModel($_id),
+            'movie_id' => $_id,
+            'bookmarkModel' => $bookmarkModel
         ]);
     }
+    
+
 
     /**
      * Creates a new Movies model.

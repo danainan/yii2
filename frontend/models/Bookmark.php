@@ -42,11 +42,7 @@ class Bookmark extends \yii\mongodb\ActiveRecord
         return [
             [['movie_id', 'user_id'], 'safe'],
 
-            ['modules' => [
-                'favorites' => [
-                    'class' => 'thyseus\favorites\Module',
-                ],
-            ]]
+            
             
         ];
     }

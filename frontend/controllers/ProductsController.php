@@ -80,6 +80,7 @@ class ProductsController extends Controller
             'product_id' => $_id,
             'cartModel' => $cartModel
         ]);
+        
     }
 
     /**
