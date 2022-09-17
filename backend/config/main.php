@@ -37,14 +37,22 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+        
+        // 'urlManager' => [
+        //     'enablePrettyUrl' => true,
+        //     'showScriptName' => false,
+        //     'rules' => [
+        //     ],
+        // ],
+        
+        // 'urlManagerFrontend' => [
+        //     'class' => 'yii\web\urlManager',
+        //     'baseUrl' => '/frontend/web',
+        //     'scriptUrl'=>'/frontend/web/index.php',
+        //     'enablePrettyUrl' => false,
+        //     'showScriptName' => true,
+        //     'hostInfo' => 'http://localhost',
+        // ],
     ],
     'params' => $params,
 ];

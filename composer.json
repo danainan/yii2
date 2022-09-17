@@ -20,6 +20,8 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "yiisoft/yii2-mongodb": "^2.1",
         "yii2mod/yii2-sweet-alert": "^1.3",
+        "et-soft/yii2-widget-select-year": "*",
+        "thyseus/yii2-favorites": "^0.1.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -5,6 +5,7 @@
 use app\models\Movies;
 use app\models\Moviecategories;
 
+
 $movies = Movies::find()->all();
 $moviecategories = Moviecategories::find()->all();
 
@@ -22,31 +23,49 @@ $this->title = 'My Yii Application';
     } */
     .movie-img {
         width: 100%;
-        height: 200px;
+        height: 250px;
     }
 </style>
 <div class="site-index">
 
 
+
     <div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categories
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-                <?php foreach ($moviecategories as $category) : ?>
-                    <a class="dropdown-item" href="#"><?= $category->category_type ?></a>
-                <?php endforeach; ?>
-                
-                
-                
+        <div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="/backend/web/index.php" class="dropdown-item">All (+<?= Movies::find()->count() ?>)</a>
+                    <?php foreach ($moviecategories as $type) : ?>
+                        <a class="dropdown-item" href="/backend/web/index.php?_id=<?= $type['_id']; ?>&categories=<?= $type->category_type ?>"><?= $type->category_type; ?> (+<?= Movies::find()->where(['categories' => $type->category_type])->count() ?>)</a>
+                    <?php endforeach; ?>
+
+                </div>
             </div>
+
+            
+
+                        
+                        
+        
+        
+        <div class="row mt-3">
+            <?php
+            if (isset($_GET['categories'])) {
+                echo '<h4 style="color:red"> categories ' . $_GET['categories'] . '</h4>';
+                $movies = Movies::find()->where(['categories' => $_GET['categories']])->all();
+            }else if(isset($_get['categories2'])){
+                echo '<h4 style="color:red"> categories2 ' . $_GET['categories2'] . '</h4>';
+                $movies = Movies::find()->where(['categories2' => $_GET['categories2']])->all();
+            }
+            ?>
         </div>
-    </div>
-    <div>
-        <h1>Movies list</h1>
-        <div class="row">
-            <?php foreach ($movies as $movie) : ?>
+        <div class="row mt-5">
+        <?php
+            foreach ($movies as $movie) : ?>
+
                 <div class="col-md-3">
                     <div class="card" style="width: 18rem;">
                         <img src="<?= $movie->photoViewer ?>" class="movie-img card-img-top" alt="<?= $movie->_id ?>">
@@ -57,16 +76,15 @@ $this->title = 'My Yii Application';
                         </div>
                     </div>
                 </div>
+
             <?php endforeach; ?>
+
+
+
+                
         </div>
+
+
+
     </div>
-
-
-
-</div>
-
-
-
-
-
 </div>

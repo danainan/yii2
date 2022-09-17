@@ -24,7 +24,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
     
     <link rel="shortcut icon" href="holdem.png" type="image/x-icon">
-    <link href="../../theme/assets/css/theme.css" rel="stylesheet" />
+    
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -37,13 +37,17 @@ AppAsset::register($this);
     
     <header>
         <?php
+        //close Yii2 bar
+        if (class_exists('yii\debug\Module')) {
+            $this->off(\yii\web\View::EVENT_END_BODY, [\yii\debug\Module::getInstance(), 'renderToolbar']);
+        }
         NavBar::begin([
             // 'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
 
             'options' => [
-                'class' => 'navbar navbar-md navbar-light fixed-top',
-                'style' => 'background-color:  #F7F3EE;box-shadow: 0px 0px 10px #888888;',
+                'class' => 'navbar navbar-expand-md navbar-light fixed-top w-100',
+                'style' => 'background-color:  #ffff ;box-shadow: 0px 0px 10px #162032;',
 
 
 
@@ -51,22 +55,22 @@ AppAsset::register($this);
             ],
 
             'brandLabel' => '
-                        <span class="col-md-12">Holdem Shop</span>
+                        <span class="col-md-12">Rottens Potatoes</span>
                         <span class="float-left"><img src="holdem.png" style="width:38px;"/></span>
                         
                         <div class="row"/>',
         ]);
         $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'font-weight-bold']],
+            ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            // ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Personal-Infos', 'url' => ['/personal-info/index']],
         ];
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
-            $menuItems[] =  ['label' => 'Cart', 'url' => ['/cart/index']];
+            // $menuItems[] =  ['label' => 'Cart', 'url' => ['/cart/index']];
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
@@ -89,7 +93,7 @@ AppAsset::register($this);
         ?>
     </header>
 
-    <main role="main" class="flex-shrink-0" style="background-color: #F7F3EE; font-family: Roboto, Kanit, sans-serif">
+    <main role="main" class="flex-shrink-0" style="background-color: #ffff; font-family: Roboto, Kanit, sans-serif">
         <div class="container" >
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -101,12 +105,12 @@ AppAsset::register($this);
         </div>
     </main>
 
-    <footer class="footer mt-auto py-3 text-muted">
+    <!-- <footer class="footer mt-auto py-3 text-muted">
         <div class="container">
             <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
             <p class="float-right"><?= Yii::powered() ?></p>
         </div>
-    </footer>
+    </footer> -->
 
     <?php $this->endBody() ?>
 </body>

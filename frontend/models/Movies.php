@@ -2,8 +2,9 @@
 
 namespace app\models;
 
+
+
 use Yii;
-use \yii\web\UploadedFile;
 
 /**
  * This is the model class for collection "movies".
@@ -16,10 +17,12 @@ use \yii\web\UploadedFile;
  * @property mixed $actors
  * @property mixed $years
  * @property mixed $movies_rate
+ * @property mixed $comment
+ * @property mixed $ratting
  */
 class Movies extends \yii\mongodb\ActiveRecord
 {
-    public $upload_foler = 'uploads';
+    public $upload_foler = '../../backend/web/uploads';
     /**
      * {@inheritdoc}
      */
@@ -42,6 +45,8 @@ class Movies extends \yii\mongodb\ActiveRecord
             'actors',
             'years',
             'movies_rate',
+            // 'comment',
+            // 'ratting',
         ];
     }
 
@@ -59,7 +64,6 @@ class Movies extends \yii\mongodb\ActiveRecord
             
             ], 
         ];
-    
     }
 
     /**
@@ -76,24 +80,11 @@ class Movies extends \yii\mongodb\ActiveRecord
             'actors' => 'Actors',
             'years' => 'Years',
             'movies_rate' => 'Movies Rate',
+            
         ];
     }
-    public function getTableSchema()
-    {
+    public function getTableSchema(){
         return false;
-    }
-
-    public function upload($model , $attribute)
-    {
-        $movies_img = UploadedFile::getInstance($model, $attribute);
-        $path = $this->getUploadPath();
-        if ($this->validate() && $movies_img !== null) {
-            $fileName = md5($movies_img->baseName . time()) . '.' . $movies_img->extension;
-            if ($movies_img->saveAs($path . $fileName)) {
-                return $fileName;
-            }
-        }
-        return $model->isNewRecord ? false : $model->getOldAttribute($attribute);
     }
 
     public function getUploadPath(){
@@ -105,8 +96,6 @@ class Movies extends \yii\mongodb\ActiveRecord
       }
       
       public function getPhotoViewer(){
-        return empty($this->movies_img) ? Yii::getAlias('@web').'/img/none.png' : $this->getUploadUrl().$this->movies_img;
+        return empty($this->movies_img) ? Yii::getAlias('/backend/web/uploads/').'/img/none.png' : $this->getUploadUrl().$this->movies_img;
       }
-      
-
 }

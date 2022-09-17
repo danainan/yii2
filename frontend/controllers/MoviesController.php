@@ -1,6 +1,6 @@
 <?php
 
-namespace backend\controllers;
+namespace frontend\controllers;
 
 use app\models\Movies;
 use app\models\MoviesSearch;
