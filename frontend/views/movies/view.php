@@ -1,9 +1,10 @@
 <?php
 
-use yii\bootstrap\NavBar;
+use app\models\Movies;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
+use thyseus\favorites\models\Favorite;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Movies */
@@ -69,6 +70,9 @@ $this->params['breadcrumbs'][] = $this->title;
         border: 3px solid #162032;
     }
 </style>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
 
 <?php $form = ActiveForm::begin(); ?>
 <div class="movies-view">
@@ -89,18 +93,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     </article>
                 </aside>
                 <aside class="col-sm-6">
-                   
+                <button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i> Bookmark</button>
+
                     <article class="card-body p-5">
-                        <?php echo
-                            NavBar::widget([
-                                'options' => ['class' => 'navbar-nav navbar-right'],
-                                'encodeLabels' => false,
-                                'items' => [
-                                    ['label' => '<span class="glyphicon glyphicon-bookmark"></span>', 'options' => ['class' => 'favorites-menu clickable', 'style' => 'cursor: pointer;'], 'url' => false, 'visible' => !$user->isGuest, 'items' => ['' => '']],
-                                  ]
-                                ]);
-                            
-                        ?>
+                        
                         <h3 class="title mb-3"><?= Html::encode($this->title) ?></h3>
 
                         <p class="price-detail-wrap">
