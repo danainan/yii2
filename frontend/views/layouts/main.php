@@ -23,7 +23,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     
-    <link rel="shortcut icon" href="holdem.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://library.kissclipart.com/20191014/lyq/kissclipart-clip-art-cartoon-potato-fictional-character-solanu-a066b2e3f56e2c68.png" type="image/x-icon">
     
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
