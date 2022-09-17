@@ -30,6 +30,7 @@ class Bookmark extends \yii\mongodb\ActiveRecord
             '_id',
             'movie_id',
             'user_id',
+            'modules'
         ];
     }
 
@@ -39,7 +40,14 @@ class Bookmark extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['movie_id', 'user_id'], 'safe']
+            [['movie_id', 'user_id'], 'safe'],
+
+            ['modules' => [
+                'favorites' => [
+                    'class' => 'thyseus\favorites\Module',
+                ],
+            ]]
+            
         ];
     }
 
