@@ -56,7 +56,7 @@ AppAsset::register($this);
 
             'brandLabel' => '
                         <span class="col-md-12">Rottens Potatoes</span>
-                        <span class="float-left"><img src="https://library.kissclipart.com/20191014/lyq/kissclipart-clip-art-cartoon-potato-fictional-character-solanu-a066b2e3f56e2c68.png" style="width:38px;"/></span>
+                        <span class="float-left"><href ="https://library.kissclipart.com/20191014/lyq/kissclipart-clip-art-cartoon-potato-fictional-character-solanu-a066b2e3f56e2c68.png" style="width:38px;"/></span>
                         
                         <div class="row"/>',
         ]);
