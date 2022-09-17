@@ -234,7 +234,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_id',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Bookmark $model, $key, $index, $column) {
+                'urlCreator' => function ($action, $model, $key, $index, $column) {
                     return Url::toRoute([$action, '_id' => (string) $model->_id]);
                 }
             ],
@@ -269,13 +269,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         if ($countItem == 0) {
                             echo '
                                 <div class="cart_buttons">
-                                    <a href="' . Url::to(['/']) . '" class="button cart_button_clear">Continue Shopping</a>
+                                    <a href="' . Url::to(['/']) . '" class="button cart_button_clear">Back to Homepage</a>
                                 </div>
                             ';
                         } else {
                             echo '
                                 <div class="cart_buttons">
-                                    <a href="' . Url::to(['/']) . '" class="button cart_button_clear">Continue Shopping</a>
+                                    <a href="' . Url::to(['/']) . '" class="button cart_button_clear">Back to Homepage</a>
                                     <a href="' . Url::to(['/checkout']) . '" class="button cart_button_checkout">Checkout</a>
                                 </div>
                             ';
