@@ -36,6 +36,7 @@ class Movieusers extends \yii\mongodb\ActiveRecord
             'gender',
             'age',
             'email',
+            'user_id',
         ];
     }
 
@@ -45,7 +46,7 @@ class Movieusers extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['usernames', 'user_img', 'gender', 'age', 'email'], 'safe']
+            [['usernames', 'user_img', 'gender', 'age', 'email','user_id'], 'safe']
         ];
     }
 
@@ -61,6 +62,7 @@ class Movieusers extends \yii\mongodb\ActiveRecord
             'gender' => 'Gender',
             'age' => 'Age',
             'email' => 'Email',
+            'user_id' => 'User ID',
         ];
     }
     public function getTableSchema(){

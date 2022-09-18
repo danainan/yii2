@@ -9,6 +9,9 @@ use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Html;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
+use app\models\Movieusers;
+
+
 
 AppAsset::register($this);
 ?>
@@ -23,7 +26,7 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     
-    <link rel="shortcut icon" href="https://i.pinimg.com/736x/ae/31/08/ae3108a2d87f00ca12324e3e4c2cd81d.jpg" type="image/x-icon">
+    <link rel="shortcut icon" href="rottenpotato.png" type="image/x-icon">
     
     
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -37,6 +40,7 @@ AppAsset::register($this);
     
     <header>
         <?php
+        
         //close Yii2 bar
         if (class_exists('yii\debug\Module')) {
             $this->off(\yii\web\View::EVENT_END_BODY, [\yii\debug\Module::getInstance(), 'renderToolbar']);
@@ -55,25 +59,28 @@ AppAsset::register($this);
             ],
 
             'brandLabel' => '
-                        <span class="col-md-12">Rottens Potatoes</span>
+                        <span class="col-md-12">Rotten Potato</span>
 
-                        <span class="float-left"><img src="https://i.pinimg.com/736x/ae/31/08/ae3108a2d87f00ca12324e3e4c2cd81d.jpg" style="width:50px;"/></span>
+                        <span class="float-left"><img src="rottenpotato.png" style="width:50px;"/></span>
 
                         
                         <div class="row"/>',
         ]);
         $menuItems = [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
+            // ['label' => 'About', 'url' => ['/site/about']],
             // ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'Personal-Infos', 'url' => ['/personal-info/index']],
+            // ['label' => 'Personal-Infos', 'url' => ['/personal-info/index']],
         ];
+        $user = Movieusers::find()->all();
+        
         if (Yii::$app->user->isGuest) {
             $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
             $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
         } else {
             // $menuItems[] =  ['label' => 'Cart', 'url' => ['/cart/index']];
             $menuItems[] =  ['label' => 'Bookmark', 'url' => ['/bookmark/index']];
+            // $menuItems[] =  ['label' => 'Profile', 'url' => Yii::$app->urlManager->createUrl(['movieusers/view','_id'=> ''])  . new MongoDB\BSON\ObjectId($user->_id) ];
             $menuItems[] = '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(

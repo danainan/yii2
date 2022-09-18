@@ -2,14 +2,22 @@
 
 use app\models\Movies;
 use app\models\Moviecategories;
-
+use app\models\MoviesSearch;
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+use app\controllers\MoviesController;
 
 
 
 /** @var yii\web\View $this */
 
+
 $movies = Movies::find()->all();
 $moviecategories = Moviecategories::find()->all();
+$MoviesSearch = new MoviesSearch();
+
+
+$limit_page = 8;
 
 
 
@@ -40,14 +48,24 @@ $this->title = 'Rottens Potatoes';
     }
 </style> -->
 
+
 <head>
   <link rel="stylesheet" href="../thememovies/assets/css/main.css">
-  <link rel="stylesheet" href="../thememovies/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../thememovies/assets/css/variable.css">
 </head>
 <script>
   function handleSelect(elm) {
     window.location = elm.value;
   }
+
+  // let search = document.getElementById('search');
+  // search.addEventListener('keyup', function (e) {
+  //   if (e.keyCode === 13) {
+  //     e.preventDefault();
+  //     document.getElementById('search-btn').click();
+  //   }
+  // });
+
 </script>
 <div class="site-index pt-5">
 
@@ -56,7 +74,13 @@ $this->title = 'Rottens Potatoes';
   <section class="banner">
     <div class="banner-card">
 
-      <img src="../thememovies/assets/images/background.jpg" class="banner-img" alt="">
+      <img src="banner.png" class="banner-img" alt="">
+
+       <!-- <div class="card-content">
+            <div class="card-info">
+            <img src="rottenpotato.png" style="width:150px ;">
+            <h2 class="card-title">Rottens Potatoes</h2>
+          </div> -->
 
 
 
@@ -77,6 +101,34 @@ $this->title = 'Rottens Potatoes';
         -->
     <div class="filter-bar">
 
+    <div class="w-50">
+      <input type="text" id="search" name="search" placeholder="Search for movie name" class="navbar-form-search" onkeypress="13">
+      <script>
+        $(document).keypress(function (e) {
+          if (e.which == 13) {
+            search();
+          }
+        });
+        
+        function search() {
+          var search = document.getElementById('search').value;
+          
+          
+          window.location.href = "index.php?movies_name=" + search;
+          
+          
+        }
+      </script>
+    </div>
+      <!-- <div class="w-100">
+      
+        <input type="text" name="search" placeholder="I'm looking for..." class="navbar-form-search">
+        
+        
+      </div>
+      <button class="btn btn-primary" id="searh-btn">Search</button> -->
+
+      
       <div class="filter-dropdowns">
 
         <select name="genre" class="genre" onchange="javascript:handleSelect(this)">
@@ -87,6 +139,9 @@ $this->title = 'Rottens Potatoes';
           <?php endforeach; ?>
 
         </select>
+
+
+
 
 
 
@@ -107,35 +162,32 @@ $this->title = 'Rottens Potatoes';
       <?php
       if (isset($_GET['categories'])) {
         $movies = Movies::find()->where(['categories' => $_GET['categories']])->all();
+      } else if (isset($_GET['movies_name'])) {
+        $movies = Movies::find()->where(['like', 'movies_name', $_GET['movies_name']])->all();
+        // $movies = Movies::find()->where(['movies_name' => $_GET['movies_name']])->all();
       }
+      
       ?>
       <?php foreach ($movies as $movie) : ?>
-        <div class="movie-card" >
-          <a href="index.php?r=movies/view&_id=<?=$movie->_id?>">
-          <div class="card-head">
-            <img src="<?= $movie->photoViewer ?>" alt="" class="card-img">
+        <div class="movie-card">
+          <a href="index.php?r=movies/view&_id=<?= $movie->_id ?>">
+            <div class="card-head">
+              <img src="<?= $movie->photoViewer ?>" alt="" class="card-img">
 
-          </div>
-
-          <div class="card-body">
-            <h3 class="card-title" style="color:#162032 ;"><?= $movie->movies_name ?></h3>
-
-            <div class="card-info">
-              <span class="genre" style="color:#162032 ;"><?= $movie->categories ?></span>
-              <span class="year" style="color:#162032 ;"><?= $movie->years?></span>
             </div>
-          </div>
 
-        </a>
+            <div class="card-body">
+              <h3 class="card-title" style="color:#162032 ;"><?= $movie->movies_name ?></h3>
+
+              <div class="card-info">
+                <span class="genre" style="color:#162032 ;"><?= $movie->categories ?></span>
+                <span class="year" style="color:#162032 ;"><?= $movie->years ?></span>
+              </div>
+            </div>
+
+          </a>
         </div>
       <?php endforeach; ?>
-
-
-
-
-
-
-      </div>
 
 
 
@@ -148,7 +200,14 @@ $this->title = 'Rottens Potatoes';
 
 
 
-  </section>
+
+</div>
+
+
+
+
+
+</section>
 
 
 

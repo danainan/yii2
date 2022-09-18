@@ -6,6 +6,9 @@ namespace app\models;
 
 use Yii;
 
+
+
+
 /**
  * This is the model class for collection "movies".
  *
@@ -98,4 +101,6 @@ class Movies extends \yii\mongodb\ActiveRecord
       public function getPhotoViewer(){
         return empty($this->movies_img) ? Yii::getAlias('/backend/web/uploads/').'/img/none.png' : $this->getUploadUrl().$this->movies_img;
       }
+      
 }
+

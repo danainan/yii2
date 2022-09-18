@@ -86,10 +86,11 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .cart_item_image {
-        width: 133px;
+        width: 90px;
         height: 133px;
-        float: left;
-        padding-top: 15px;
+        /* float: left; */
+        /* padding-top: 15px; */
+        cursor: pointer;
 
     }
 
@@ -98,7 +99,7 @@ $this->params['breadcrumbs'][] = $this->title;
     }
 
     .cart_item_info {
-        width: calc(100% - 133px);
+        /* width: calc(100% - 133px); */
         float: left;
         padding-top: 18px
     }
@@ -113,105 +114,17 @@ $this->params['breadcrumbs'][] = $this->title;
         color: rgba(0, 0, 0, 0.5)
     }
 
-    .cart_item_text {
-        font-size: 16px;
-        font-weight: 500;
-        width: 250px;
-        float: left;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    
 
-    }
+
+    
+
+    
+
+    
 
 
 
-    .cart_item_text span {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        margin-right: 11px;
-        -webkit-transform: translateY(4px);
-        -moz-transform: translateY(4px);
-        -ms-transform: translateY(4px);
-        -o-transform: translateY(4px);
-        transform: translateY(4px)
-    }
-
-    .cart_item_price {
-        text-align: right
-    }
-
-    .cart_item_total {
-        text-align: right
-    }
-
-    .order_total {
-        width: 100%;
-        height: 60px;
-        margin-top: 30px;
-        border: solid 1px #e8e8e8;
-        box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
-        padding-right: 46px;
-        padding-left: 15px;
-        background-color: #fff
-    }
-
-    .order_total_title {
-        display: inline-block;
-        font-size: 14px;
-        color: rgba(0, 0, 0, 0.5);
-        line-height: 60px
-    }
-
-    .order_total_amount {
-        display: inline-block;
-        font-size: 18px;
-        font-weight: 500;
-        margin-left: 26px;
-        line-height: 60px
-    }
-
-    .cart_buttons {
-        margin-top: 60px;
-        text-align: right
-    }
-
-    .cart_button_clear {
-        display: inline-block;
-        border: none;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 48px;
-        color: rgba(0, 0, 0, 0.5);
-        background: #FFFFFF;
-        border: solid 1px #b2b2b2;
-        padding-left: 35px;
-        padding-right: 35px;
-        outline: none;
-        cursor: pointer;
-        margin-right: 26px
-    }
-
-    .cart_button_clear:hover {
-        border-color: #0e8ce4;
-        color: #0e8ce4
-    }
-
-    .cart_button_checkout {
-        display: inline-block;
-        border: none;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 48px;
-        color: #FFFFFF;
-        padding-left: 35px;
-        padding-right: 35px;
-        outline: none;
-        cursor: pointer;
-        vertical-align: top
-    }
 </style>
 
 
@@ -222,7 +135,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-lg-10 offset-lg-1">
                 <div class="cart_container">
                     <div class="cart_title">
-                        <span>Bookmarks</span>
+                        <span>Your Bookmarks</span>
 
 
                     </div>
@@ -235,47 +148,51 @@ $this->params['breadcrumbs'][] = $this->title;
                             $movie = Movies::findOne(new MongoDB\BSON\ObjectID($model->movie_id));
                         ?>
 
-                            <ul class="cart_list">
-                                <li class="cart_item clearfix">
-                                    <div class="cart_item_image"><img src="<?= $movie->photoViewer ?>" alt=""></div>
-                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-                                        <div class="col-4">
-                                            <div class="cart_item_title">Name </div>
-                                            <td class="cart_item_text"><?= $movie->movies_name ?></td>
-                                        </div>
-                                        
-                                        <div class="col-2">
-                                            <div><?= Html::a('Delete', ['delete', '_id' => (string) $model->_id], [
-                                                                'class' => 'btn btn-danger',
-                                                                'data' => [
-                                                                    'confirm' => 'Are you sure you want to delete this item?',
-                                                                    'method' => 'post',
-
-                                                                ],
-                                                            ]) ?>
-                                            </div>
-                                        </div>
-                                        
-
+                            <div class="cart_list mb-5">
+                                
+                                <div class="cart_item clearfix">
+                                
+                                <div class="row">
+                                    <div class="col-4">
+                                        <a href="index.php?r=movies/view&_id=<?=$model->_id?>"><div class="cart_item_image"><img src="<?= $movie->photoViewer ?>" alt=""></div></a>
 
                                     </div>
+                                    <div class="col-4">
+                                            <div class="cart_item_title">Name </div>
+                                            <td class="cart_item_text"><?= $movie->movies_name ?></td>
 
-                                </li>
+                                    </div>
+                                    <div class="col-2">
+                                            <div><?= Html::a('Delete', ['delete', '_id' => (string) $model->_id], [
+                                                        'class' => 'btn btn-danger',
+                                                        'data' => [
+                                                            'confirm' => 'Are you sure you want to delete this item?',
+                                                            'method' => 'post',
 
-
-                            </ul>
+                                                        ],
+                                                    ]) ?>
+                                            </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                                    
+                                    
+                                    
+                                        
+                                    
 
 
                         <?php
 
 
                         } ?>
-                        
+
 
 
 
                     </div>
-            
+
 
 
                 </div>

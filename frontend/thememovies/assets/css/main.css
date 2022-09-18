@@ -154,7 +154,7 @@ nav { margin-right: 200px; }
 }
 
 .navbar-form-search {
-  background: var(--oxford-blue);
+  background: #3182ED;
   width: 100%;
   padding: 12px 20px;
   border-radius: 15px;

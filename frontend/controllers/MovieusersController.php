@@ -1,13 +1,13 @@
 <?php
 
-namespace app\controllers;
+namespace frontend\controllers;
 
 use app\models\Movieusers;
 use app\models\MovieusersSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use Yii;
 /**
  * MovieusersController implements the CRUD actions for Movieusers model.
  */
@@ -38,12 +38,10 @@ class MovieusersController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new MovieusersSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $user = Movieusers::find()->where(["user_id"=>(String)Yii::$app->user->identity->_id])->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'user' => $user,
         ]);
     }
 
@@ -73,9 +71,7 @@ class MovieusersController extends Controller
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', '_id' => (string) $model->_id]);
             }
-        } else {
-            $model->loadDefaultValues();
-        }
+        } 
 
         return $this->render('create', [
             'model' => $model,

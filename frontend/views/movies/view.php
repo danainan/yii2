@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Bookmark;
 use app\models\Movies;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
@@ -98,22 +99,67 @@ $this->params['breadcrumbs'][] = $this->title;
                     if (Yii::$app->user->isGuest) {
                         echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
                     }else {
-                        echo '<button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i> Bookmark</button>';
-                        echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
-                        echo $form->field($bookmarkModel, 'user_id')->hiddenInput(['value'=>Yii::$app->user->identity->id])->label(false);
-                    }
+                        // if (Bookmark::find()->where(['movie_id' => $movie_id])->andWhere(['user_id' => Yii::$app->user->identity->id])->exists()) {
+                        //     echo Html::a('Remove from Bookmark', ['bookmark/delete', 'id' => $movie_id], [
+                        //         'class' => 'btn btn-danger',
+                        //         'data' => [
+                        //             'confirm' => 'Are you sure you want to remove this movie from your bookmark?',
+                        //             'method' => 'post',
+                        //         ],
+                        //     ]);
+                        // } else {
+                        //     echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
+                        //     echo Html::submitButton('Add to Bookmark', ['class' => 'btn btn-success']);
+                        // }
+                        
 
+                        if (Bookmark::find()->where(['user_id' => (String)Yii::$app->user->identity->id])->andWhere(['movie_id' => $movie_id])->exists()) {
+
+                           
+                            
+                            echo '<button class="btn btn-danger mt-3 " disabled><i class="fa-regular fa-bookmark "></i></button>';
+                           
+                            
+                            
+
+                        } else {
+                            
+                            echo '<button class="btn btn-warning mt-3"><i class="fa-regular fa-bookmark "></i></button>';
+                            echo $form->field($bookmarkModel, 'movie_id')->hiddenInput(['value'=>$movie_id])->label(false);
+                            echo $form->field($bookmarkModel, 'user_id')->hiddenInput(['value'=>Yii::$app->user->identity->id])->label(false);
+                        }
+                        
+                        
+                    }
                     ?>
                 </div>
                     <article class="card-body p-5">
                         
                         <h3 class="title mb-3"><?= Html::encode($this->title) ?></h3>
+                        <dl class="item-property">
+                            
+                            <dd><p><?= $model->movies_rate ?></p>
+                            
+                            
+                        </dl>
+                        <dl class="item-property">
+                            <dt>Description</dt>
+                            <dd><p><?= $model->descriptions ?></p></dd>
+                        </dl>
+                        <dl class="param param-feature">
+                            <dt>Genre</dt>
+                            <dd><?= $model->categories ?></dd>
+                        </dl>
+                        <dl class="item-property">
+                            <dt>Years</dt>
+                            <dd><p><?= $model->years ?></p></dd>
+                        </dl>
+                        <dl class="param param-feature">
+                            <dt>Director</dt>
+                            <dd><?= $model->actors ?></dd>
+                        </dl>
 
-                        <p class="price-detail-wrap">
-                            <span class="price h2 text-primary">
-                                <span class="currency"></span><span class="num"><?= $model->years ?></span>
-                            </span>
-                        </p>
+
 
             </div>
         </div>
