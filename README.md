@@ -6,8 +6,6 @@
     <br>
 </p>
 
-![header](https://user-images.githubusercontent.com/71175110/203381189-8cd396dc-a46a-49d6-ad61-4e6c3e0aea88.jpg)
-
 :snowman: ใช้ xampp -> Apache, MongoDB -> Yii2 Collection
 
 Yii 2 Advanced Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
